@@ -9,4 +9,11 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install git netcat \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install PHPMD with --ignore-violations-on-exit flag support
+RUN composer global require "phpmd/phpmd:dev-master#f2467d1729dc12af79a8a834417ed15e7a14f485@dev"
+
+ENV PATH="~/.composer/vendor/bin:${PATH}"
+
 WORKDIR "/var/www/miaoxing"
