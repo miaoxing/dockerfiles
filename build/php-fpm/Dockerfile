@@ -6,7 +6,7 @@ RUN curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit \
 
 # Install git to clone composer package, nc to detect to MySQL connection status
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install git netcat \
+    && apt-get -y --no-install-recommends install git netcat php5-xdebug \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -18,5 +18,3 @@ RUN composer global config repositories.phpmd-extension git https://github.com/m
     && composer global require mi-schi/phpmd-extension:3.*
 
 ENV PATH="~/.composer/vendor/bin:${PATH}"
-
-WORKDIR "/var/www/miaoxing"
