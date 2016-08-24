@@ -14,7 +14,7 @@
 - sqlite
 - gd
 
-### build版增加
+### build在默认版之外增加
 
 - git
 - nc
@@ -22,3 +22,9 @@
 - phpunit
 - phpmd
 - mi-schi/phpmd-extension
+
+### git-subrepo版
+
+- git
+- ssh
+- ingydotnet/git-subrepo
