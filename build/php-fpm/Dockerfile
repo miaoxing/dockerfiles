@@ -15,6 +15,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer global require "phpmd/phpmd:dev-master#f2467d1729dc12af79a8a834417ed15e7a14f485@dev"
 
 RUN composer global config repositories.phpmd-extension git https://github.com/mi-schi/phpmd-extension.git \
-    && composer global require mi-schi/phpmd-extension:3.*
+    && composer global require mi-schi/phpmd-extension:4.*
 
 ENV PATH="~/.composer/vendor/bin:${PATH}"
