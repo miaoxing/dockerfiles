@@ -24,6 +24,8 @@
 - phpunit
 - https://github.com/phpmd/phpmd
 - https://github.com/mi-schi/phpmd-extension
+- https://github.com/FriendsOfPHP/PHP-CS-Fixer
+- https://github.com/squizlabs/PHP_CodeSniffer
 
 ### deploy在默认版之外增加
 
