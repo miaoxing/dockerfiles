@@ -3,7 +3,7 @@
 - [miaoxing/php56-fpm](https://github.com/miaoxing/dockerfiles/blob/master/php-fpm/Dockerfile) 用于运行
 - [miaoxing/php56-fpm:build](https://github.com/miaoxing/dockerfiles/blob/master/build/php-fpm/Dockerfile) 用于CI构建
 - [miaoxing/deploy](https://github.com/miaoxing/dockerfiles/blob/master/deploy/Dockerfile) 用于运行发布流程
-- [miaoxing/git-subrepo](https://github.com/miaoxing/dockerfiles/blob/master/git-subrepo/Dockerfile) 用于项目拆分
+- [miaoxing/git-subrepo](https://github.com/miaoxing/dockerfiles/blob/master/git-subrepo/Dockerfile) 用于CI构建和项目拆分
 
 包含扩展/程序
 
@@ -31,9 +31,8 @@
 
 - https://github.com/rocketeers/rocketeer
 
-### git-subrepo版
+### git-subrepo版在build版之外增加
 
-- git
 - ssh
 - https://github.com/ingydotnet/git-subrepo
 

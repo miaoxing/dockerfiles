@@ -1,11 +1,8 @@
-FROM debian:jessie
-
-# Fixes some weird terminal issues such as broken clear / CTRL+L
-ENV TERM=linux
+FROM miaoxing/php56-fpm:build
 
 # Install git, ssh
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install git ca-certificates openssh-client \
+    && apt-get -y --no-install-recommends install openssh-client \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install git-subrepo 16-08-24
