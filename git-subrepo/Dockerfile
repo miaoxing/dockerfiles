@@ -16,10 +16,12 @@ ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.6.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
-  && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
+
+# Install eslint
+RUN npm install -g eslint babel-eslint
 
 # Install htmllint-cli
 RUN npm install -g htmllint-cli

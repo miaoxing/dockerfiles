@@ -36,6 +36,7 @@
 - ssh
 - https://github.com/ingydotnet/git-subrepo
 - Node.js v6.6.0
+- https://github.com/eslint/eslint
 - https://github.com/htmllint/htmllint-cli
 
 ## TODO
