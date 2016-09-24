@@ -1,8 +1,8 @@
 FROM miaoxing/php56-fpm:build
 
-# Install git, ssh
+# Install git, ssh, xz to decompress node package
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install openssh-client \
+    && apt-get -y --no-install-recommends install openssh-client xz-utils \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install git-subrepo 16-08-24
