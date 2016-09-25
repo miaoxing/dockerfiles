@@ -25,3 +25,6 @@ RUN npm install -g eslint babel-eslint
 
 # Install htmllint-cli
 RUN npm install -g htmllint-cli
+
+# Install csslint
+RUN npm install -g csslint

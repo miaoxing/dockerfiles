@@ -34,11 +34,14 @@
 ### git-subrepo版在build版之外增加
 
 - ssh
-- https://github.com/ingydotnet/git-subrepo
+- git-subrepo https://github.com/ingydotnet/git-subrepo
 - Node.js v6.6.0
-- https://github.com/eslint/eslint
-- https://github.com/htmllint/htmllint-cli
+- ESLint https://github.com/eslint/eslint
+- htmllint-cli https://github.com/htmllint/htmllint-cli
+- CSSLint https://github.com/CSSLint/csslint
 
 ## TODO
 
 - [ ] 默认版和build版之间加入dev版
+- [ ] build版移除php-fpm目录?
+- [ ] git-subrepo拆分一些build功能到build版
