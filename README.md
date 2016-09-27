@@ -22,10 +22,11 @@
 - nc
 - xdebug
 - phpunit
-- https://github.com/phpmd/phpmd
-- https://github.com/mi-schi/phpmd-extension
-- https://github.com/FriendsOfPHP/PHP-CS-Fixer
-- https://github.com/squizlabs/PHP_CodeSniffer
+- PHPMD https://github.com/phpmd/phpmd
+- phpmd-extension https://github.com/mi-schi/phpmd-extension
+- PHP-CS-Fixer https://github.com/FriendsOfPHP/PHP-CS-Fixer
+- PHP_CodeSniffer https://github.com/squizlabs/PHP_CodeSniffer
+- Miaoxing Coding Standards https://github.com/miaoxing/coding-standards.git
 
 ### deploy在默认版之外增加
 
