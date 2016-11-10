@@ -31,7 +31,7 @@ RUN curl -L https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar -o phpcs \
     && mv phpcbf /usr/local/bin/phpcbf
 
 # Install Miaoxing Coding standards
-RUN composer global require "miaoxing/coding-standards:0.9.0" \
+RUN composer global require "miaoxing/coding-standards:0.9.1" \
     && phpcs --config-set installed_paths ~/.composer/vendor/miaoxing/coding-standards \
     && phpcs -i
 
