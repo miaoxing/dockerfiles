@@ -31,8 +31,8 @@ RUN curl -L https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar -o phpcs \
     && mv phpcbf /usr/local/bin/phpcbf
 
 # Install Miaoxing Coding standards
-RUN git clone https://github.com/miaoxing/coding-standards.git ~/coding-standards \
-    && phpcs --config-set installed_paths ~/coding-standards \
+RUN composer global require "miaoxing/coding-standards:0.9.0" \
+    && phpcs --config-set installed_paths ~/.composer/vendor/miaoxing/coding-standards \
     && phpcs -i
 
 ENV PATH="~/.composer/vendor/bin:${PATH}"
