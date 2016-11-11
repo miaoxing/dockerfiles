@@ -22,9 +22,9 @@ RUN curl -L https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v1.12
     && chmod a+x php-cs-fixer \
     && mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
-ENV PATH="~/.composer/vendor/bin:${PATH}"
-
 # Install PHP_CodeSniffer, Miaoxing Coding standards
-RUN composer global require "miaoxing/coding-standards:0.9.1" \
-    && phpcs --config-set installed_paths ~/.composer/vendor/miaoxing/coding-standards \
-    && phpcs -i
+RUN composer global require miaoxing/coding-standards:0.9.1 \
+    && ~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/miaoxing/coding-standards \
+    && ~/.composer/vendor/bin/phpcs -i
+
+ENV PATH ~/.composer/vendor/bin:$PATH
