@@ -1,4 +1,4 @@
-FROM miaoxing/php56-fpm:build
+FROM miaoxing/build
 
 # Install git, ssh, xz to decompress node package
 RUN apt-get update \
