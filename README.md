@@ -45,4 +45,3 @@
 
 - [ ] 默认版和build版之间加入dev版
 - [ ] build版移除php-fpm目录?
-- [ ] git-subrepo拆分一些build功能到build版
