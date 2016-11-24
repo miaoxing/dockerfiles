@@ -27,6 +27,10 @@
 - PHP-CS-Fixer https://github.com/FriendsOfPHP/PHP-CS-Fixer
 - PHP_CodeSniffer https://github.com/squizlabs/PHP_CodeSniffer
 - Miaoxing Coding Standards https://github.com/miaoxing/coding-standards.git
+- Node.js v6.6.0
+- ESLint https://github.com/eslint/eslint
+- htmllint-cli https://github.com/htmllint/htmllint-cli
+- CSSLint https://github.com/CSSLint/csslint
 
 ### deploy在默认版之外增加
 
@@ -36,10 +40,6 @@
 
 - ssh
 - git-subrepo https://github.com/ingydotnet/git-subrepo
-- Node.js v6.6.0
-- ESLint https://github.com/eslint/eslint
-- htmllint-cli https://github.com/htmllint/htmllint-cli
-- CSSLint https://github.com/CSSLint/csslint
 
 ## TODO
 
