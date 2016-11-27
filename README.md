@@ -26,7 +26,7 @@
 - phpmd-extension https://github.com/mi-schi/phpmd-extension
 - PHP-CS-Fixer https://github.com/FriendsOfPHP/PHP-CS-Fixer
 - PHP_CodeSniffer https://github.com/squizlabs/PHP_CodeSniffer
-- Miaoxing Coding Standards https://github.com/miaoxing/coding-standards.git
+- Miaoxing Coding Standards https://github.com/miaoxing/coding-standards
 - Node.js v6.6.0
 - ESLint https://github.com/eslint/eslint
 - htmllint-cli https://github.com/htmllint/htmllint-cli
