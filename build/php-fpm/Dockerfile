@@ -47,3 +47,5 @@ RUN npm install -g htmllint-cli
 
 # Install csslint
 RUN npm install -g csslint
+
+RUN npm install -g stylelint

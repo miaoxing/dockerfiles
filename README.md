@@ -31,6 +31,7 @@
 - ESLint https://github.com/eslint/eslint
 - htmllint-cli https://github.com/htmllint/htmllint-cli
 - CSSLint https://github.com/CSSLint/csslint
+- stylelint https://github.com/stylelint/stylelint
 
 ### deploy在默认版之外增加
 
