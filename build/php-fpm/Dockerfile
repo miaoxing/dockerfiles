@@ -13,10 +13,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 ENV PATH ~/.composer/vendor/bin:$PATH
 
-# Install Node.js v6.6.0
+# Install Node.js v6.14.2
 # @link https://github.com/nodejs/docker-node/blob/1c65c4ed3785432fe9e9fa71a26799d86df10de4/6.6/Dockerfile
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.6.0
+ENV NODE_VERSION 6.14.2
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \

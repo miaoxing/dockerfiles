@@ -21,12 +21,12 @@
 - git
 - nc
 - xdebug
-- Node.js v6.6.0
+- Node.js v6.14.2
 
 ### deploy在默认版之外增加
 
 - https://github.com/rocketeers/rocketeer
-- Node.js v6.6.0
+- Node.js v6.14.2
 - yarn
 
 ### git-subrepo版在build版之外增加
