@@ -21,17 +21,7 @@
 - git
 - nc
 - xdebug
-- phpunit
-- PHPMD https://github.com/phpmd/phpmd
-- phpmd-extension https://github.com/mi-schi/phpmd-extension
-- PHP-CS-Fixer https://github.com/FriendsOfPHP/PHP-CS-Fixer
-- PHP_CodeSniffer https://github.com/squizlabs/PHP_CodeSniffer
-- Miaoxing Coding Standards https://github.com/miaoxing/coding-standards
 - Node.js v6.6.0
-- ESLint https://github.com/eslint/eslint
-- htmllint-cli https://github.com/htmllint/htmllint-cli
-- CSSLint https://github.com/CSSLint/csslint
-- stylelint https://github.com/stylelint/stylelint
 
 ### deploy在默认版之外增加
 
@@ -47,4 +37,4 @@
 ## TODO
 
 - [ ] 默认版和build版之间加入dev版
-- [ ] build版移除php-fpm目录?
+- [ ] build版移出php-fpm目录?
