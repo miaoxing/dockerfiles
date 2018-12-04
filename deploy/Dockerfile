@@ -7,7 +7,8 @@ RUN curl -O http://rocketeer.autopergamene.eu/versions/rocketeer.phar \
 
 # Install git and ssh
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install git openssh-client xz-utils apt-transport-https
+    && apt-get --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
+    --no-install-recommends install git openssh-client xz-utils apt-transport-https
 
 # Install Node.js v9.11.2
 # https://github.com/nodejs/docker-node/blob/1c65c4ed3785432fe9e9fa71a26799d86df10de4/6.6/Dockerfile
