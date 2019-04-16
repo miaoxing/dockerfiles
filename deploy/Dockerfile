@@ -6,6 +6,7 @@ RUN curl -O http://rocketeer.autopergamene.eu/versions/rocketeer.phar \
     && mv rocketeer.phar /usr/local/bin/rocketeer
 
 # Install git and ssh
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN apt-get update \
     && apt-get --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
     --no-install-recommends install git openssh-client xz-utils apt-transport-https

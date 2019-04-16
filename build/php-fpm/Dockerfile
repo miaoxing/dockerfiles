@@ -5,6 +5,7 @@ RUN curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit \
     && chmod +x /usr/local/bin/phpunit
 
 # Install git to clone composer package, nc to detect to MySQL connection status
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN apt-get update \
     && apt-get -y --no-install-recommends install git netcat php5-xdebug xz-utils \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
