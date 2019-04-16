@@ -21,7 +21,7 @@
 - git
 - nc
 - xdebug
-- Node.js v6.14.2
+- Node.js v11.2.0
 
 ### deploy在默认版之外增加
 
