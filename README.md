@@ -25,9 +25,10 @@
 
 ### deploy在默认版之外增加
 
-- https://github.com/rocketeers/rocketeer
-- Node.js v6.14.2
+- Deployer
+- Node.js v11.2.0
 - yarn
+- https://github.com/rocketeers/rocketeer
 
 ### git-subrepo版在build版之外增加
 

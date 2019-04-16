@@ -13,7 +13,7 @@ RUN apt-get update \
 # Install Node.js v9.11.2
 # https://github.com/nodejs/docker-node/blob/1c65c4ed3785432fe9e9fa71a26799d86df10de4/6.6/Dockerfile
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 9.11.2
+ENV NODE_VERSION 11.2.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
@@ -26,6 +26,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
  && apt-get update && apt-get install yarn \
  && yarn --version
+
+# Install Deployer
+RUN curl -LO https://deployer.org/deployer.phar \
+ && mv deployer.phar /usr/local/bin/dep \
+ && chmod +x /usr/local/bin/dep
 
 # Clean apt
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
