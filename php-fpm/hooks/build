@@ -1,0 +1,6 @@
+#!/bin/sh
+
+docker build \
+    --build-arg LARADOCK_PHP_VERSION=7.3 \
+    -f laradock/php-fpm/Dockerfile
+    -t $IMAGE_NAME .
