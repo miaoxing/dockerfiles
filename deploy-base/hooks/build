@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cp ../laradock/workspace/* .
+
+docker build \
+    --build-arg LARADOCK_PHP_VERSION=7.3 \
+    --build-arg TZ=Asia/Shanghai \
+    --build-arg INSTALL_EXIF=true \
+    --build-arg INSTALL_GMP=true \
+    --build-arg INSTALL_IMAGEMAGICK=true \
+    --build-arg INSTALL_OPCACHE=true \
+    --build-arg INSTALL_PCNTL=true \
+    --build-arg INSTALL_PHPREDIS=true \
+    --build-arg INSTALL_SOAP=true \
+    --build-arg NODE_VERSION=11.2.0 \
+    --build-arg INSTALL_NODE=true \
+    --build-arg INSTALL_YARN=true \
+    --build-arg INSTALL_DEPLOYER=true \
+    -t $IMAGE_NAME .
