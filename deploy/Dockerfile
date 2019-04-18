@@ -1,6 +1,4 @@
-# See ./hooks/build
-
-FROM miaoxing/deploy-base:latest
+FROM miaoxing/workspace:latest
 
 # Install git and ssh
 RUN apt-get update \
