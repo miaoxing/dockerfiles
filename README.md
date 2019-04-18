@@ -24,7 +24,7 @@
 - yarn
 - nc
 
-### deploy在之外增加
+### deploy在php-fpm之外增加
 
 - git
 - Node.js v11.2.0
