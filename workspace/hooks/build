@@ -16,4 +16,5 @@ docker build \
     --build-arg INSTALL_NODE=true \
     --build-arg INSTALL_YARN=true \
     --build-arg INSTALL_DEPLOYER=true \
+    --build-arg INSTALL_XDEBUG=true \
     -t $IMAGE_NAME .
