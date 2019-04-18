@@ -1,20 +1,24 @@
 #!/bin/sh
 
+set -o allexport
+source ../.env
+set +o allexport
+
 cp -r ../laradock/workspace/* .
 
 docker build \
-    --build-arg LARADOCK_PHP_VERSION=7.3 \
-    --build-arg TZ=Asia/Shanghai \
-    --build-arg INSTALL_EXIF=true \
-    --build-arg INSTALL_GMP=true \
-    --build-arg INSTALL_IMAGEMAGICK=true \
-    --build-arg INSTALL_OPCACHE=true \
-    --build-arg INSTALL_PCNTL=true \
-    --build-arg INSTALL_PHPREDIS=true \
-    --build-arg INSTALL_SOAP=true \
-    --build-arg NODE_VERSION=11.2.0 \
-    --build-arg INSTALL_NODE=true \
-    --build-arg INSTALL_YARN=true \
-    --build-arg INSTALL_DEPLOYER=true \
-    --build-arg INSTALL_XDEBUG=true \
+    --build-arg LARADOCK_PHP_VERSION=${PHP_VERSION} \
+    --build-arg TZ=${WORKSPACE_TIMEZONE} \
+    --build-arg INSTALL_EXIF=${PHP_FPM_INSTALL_EXIF} \
+    --build-arg INSTALL_GMP=${PHP_FPM_INSTALL_GMP} \
+    --build-arg INSTALL_IMAGEMAGICK=${PHP_FPM_INSTALL_IMAGEMAGICK} \
+    --build-arg INSTALL_OPCACHE=${PHP_FPM_INSTALL_OPCACHE} \
+    --build-arg INSTALL_PCNTL=${PHP_FPM_INSTALL_PCNTL} \
+    --build-arg INSTALL_PHPREDIS=${PHP_FPM_INSTALL_PHPREDIS} \
+    --build-arg INSTALL_SOAP=${PHP_FPM_INSTALL_SOAP} \
+    --build-arg NODE_VERSION=${WORKSPACE_NODE_VERSION} \
+    --build-arg INSTALL_NODE=${WORKSPACE_INSTALL_NODE} \
+    --build-arg INSTALL_YARN=${WORKSPACE_INSTALL_YARN} \
+    --build-arg INSTALL_DEPLOYER=${WORKSPACE_INSTALL_DEPLOYER} \
+    --build-arg INSTALL_XDEBUG=${WORKSPACE_INSTALL_XDEBUG} \
     -t $IMAGE_NAME .
