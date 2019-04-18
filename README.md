@@ -1,7 +1,7 @@
 # Miaoxing Dockerfiles
 
 - [miaoxing/php-fpm](https://github.com/miaoxing/dockerfiles/blob/master/php-fpm) 用于运行
-- [miaoxing/build](https://github.com/miaoxing/dockerfiles/blob/master/build/php-fpm/Dockerfile) 用于CI构建
+- [miaoxing/build](https://github.com/miaoxing/dockerfiles/blob/master/build/Dockerfile) 用于运行CI构建
 - [miaoxing/deploy](https://github.com/miaoxing/dockerfiles/blob/master/deploy/Dockerfile) 用于运行发布流程
 
 包含扩展/程序
