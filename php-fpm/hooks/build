@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp ../laradock/php-fpm/* .
+cp -r ../laradock/php-fpm/* .
 
 docker build \
     --build-arg LARADOCK_PHP_VERSION=7.3 \
