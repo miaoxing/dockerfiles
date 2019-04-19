@@ -7,6 +7,4 @@ RUN apt-get update \
 
 COPY supervisord.conf /etc/supervisord.conf
 
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
-
-WORKDIR /etc/supervisor/conf.d/
+CMD ["/usr/bin/supervisord"]
