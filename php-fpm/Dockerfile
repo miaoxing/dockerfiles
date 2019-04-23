@@ -11,7 +11,7 @@ RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
     && rm /usr/local/etc/php-fpm.d/xlaravel.pool.conf
 
 COPY miaoxing.ini /usr/local/etc/php/conf.d/miaoxing.ini
-COPY miaoxing.conf /usr/local/etc/php-fpm.d/miaoxing.conf
+COPY miaoxing.conf /usr/local/etc/php-fpm.d/x-miaoxing.conf
 
 # Clean apt
 RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
