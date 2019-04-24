@@ -1,5 +1,6 @@
 # Miaoxing Dockerfiles
 
+- [miaoxing/nginx](https://github.com/miaoxing/dockerfiles/blob/master/nginx/Dockerfile) 用于运行Web
 - [miaoxing/php-fpm](https://github.com/miaoxing/dockerfiles/blob/master/php-fpm) 用于运行Web
 - [miaoxing/php-worker](https://github.com/miaoxing/dockerfiles/blob/master/php-worker) 用于运行后端任务
 - [miaoxing/build](https://github.com/miaoxing/dockerfiles/blob/master/build/Dockerfile) 用于运行CI构建
