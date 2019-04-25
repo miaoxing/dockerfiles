@@ -13,6 +13,4 @@ RUN set -x \
 # Remove the default conf to avoid conflict
 RUN rm /etc/nginx/conf.d/default.conf
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
-
-COPY ./server-common.conf /etc/nginx/server-common.conf
+COPY ./nginx.conf ./force-ssl.conf ./server-common.conf /etc/nginx/
