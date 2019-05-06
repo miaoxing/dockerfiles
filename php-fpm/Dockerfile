@@ -5,6 +5,9 @@ RUN apt-get update \
     && apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
     --no-install-recommends install ffmpeg
 
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Use recommended production ini and remove unused configuration
 RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
     && rm /usr/local/etc/php/conf.d/laravel.ini \
