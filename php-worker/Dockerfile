@@ -10,4 +10,6 @@ COPY ./supervisord.conf /etc/supervisor/supervisord.conf
 # Execute "php" in cron
 RUN ln -s /usr/local/bin/php /usr/bin/php
 
-CMD ["/usr/bin/supervisord"]
+COPY ./cmd.sh /
+
+CMD ["/cmd.sh"]
