@@ -1,5 +1,11 @@
 FROM miaoxing/php-fpm-base:latest
 
+# Set Timezone
+ARG TZ=Asia/Shanghai
+ENV TZ ${TZ}
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Install FFMPEG
 RUN apt-get update \
     && apt-get -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
