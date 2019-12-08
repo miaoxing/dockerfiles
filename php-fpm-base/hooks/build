@@ -15,4 +15,5 @@ docker build \
     --build-arg INSTALL_PCNTL=${PHP_FPM_INSTALL_PCNTL} \
     --build-arg INSTALL_PHPREDIS=${PHP_FPM_INSTALL_PHPREDIS} \
     --build-arg INSTALL_SOAP=${PHP_FPM_INSTALL_SOAP} \
+    --build-arg INSTALL_SOAP=${PHP_FPM_INSTALL_MYSQLI} \
     -t $IMAGE_NAME .
