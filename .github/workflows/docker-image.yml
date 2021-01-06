@@ -12,6 +12,8 @@ jobs:
         php_version: [ 73, 74 ]
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Build the Docker image
         env:
           PHP_VERSION: ${{ matrix.php_version }}
