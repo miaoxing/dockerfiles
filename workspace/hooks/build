@@ -4,7 +4,7 @@ set -o allexport
 source ../.env
 set +o allexport
 
-cp -r ../laradock/workspace/* .
+cd ../laradock/workspace
 
 docker build \
     --build-arg LARADOCK_PHP_VERSION=${PHP_VERSION} \

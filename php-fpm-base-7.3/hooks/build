@@ -4,7 +4,7 @@ set -o allexport
 source ../.env
 set +o allexport
 
-cp -r ../laradock/php-fpm/* .
+cd ../laradock/php-fpm
 
 docker build \
     --build-arg LARADOCK_PHP_VERSION=7.3 \
