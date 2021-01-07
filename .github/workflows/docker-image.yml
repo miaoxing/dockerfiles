@@ -25,7 +25,6 @@ jobs:
 
           docker image ls
       - name: Push image to Docker hub
-        if: success()
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
           docker push miaoxing/php-fpm-base:latest-${{ matrix.php_version }}
@@ -48,7 +47,6 @@ jobs:
           docker build . -t miaoxing/php-worker:latest-${{ matrix.php_version }}
           docker image ls
       - name: Push image to Docker hub
-        if: success()
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
           docker push miaoxing/php-worker:latest-${{ matrix.php_version }}
@@ -68,7 +66,6 @@ jobs:
           ./hooks/build
           docker image ls
       - name: Push image to Docker hub
-        if: success()
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
           docker push miaoxing/workspace:latest
@@ -87,7 +84,6 @@ jobs:
           docker build . -t miaoxing/deploy:latest
           docker image ls
       - name: Push image to Docker hub
-        if: success()
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
           docker push miaoxing/deploy:latest
@@ -105,7 +101,6 @@ jobs:
           docker build . -t miaoxing/build:latest
           docker image ls
       - name: Push image to Docker hub
-        if: success()
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
           docker push miaoxing/build:latest
@@ -123,7 +118,6 @@ jobs:
           docker build . -t miaoxing/nginx:latest
           docker image ls
       - name: Push image to Docker hub
-        if: success()
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
           docker push miaoxing/nginx:latest
