@@ -2,7 +2,10 @@ name: Docker Image CI
 
 on:
   push:
-    branches: master
+    branches: [ master ]
+
+env:
+  TAG: $([ ${GITHUB_REF#refs/*/} == "master" ] && echo "latest" || echo ${GITHUB_REF#refs/*/})
 
 jobs:
   php-fpm:
@@ -18,19 +21,19 @@ jobs:
         continue-on-error: true
       - name: Build the Docker image
         run: |
-          export IMAGE_NAME=miaoxing/php-fpm-base:latest-${{ matrix.php_version }}
+          export IMAGE_NAME=miaoxing/php-fpm-base:${{ env.TAG }}-${{ matrix.php_version }}
           cd php-fpm-base-${{ matrix.php_version }}
           ./hooks/build
 
           cd ../php-fpm-${{ matrix.php_version }}
-          docker build . -t miaoxing/php-fpm:latest-${{ matrix.php_version }}
+          docker build . -t miaoxing/php-fpm:${{ env.TAG }}-${{ matrix.php_version }}
 
           docker image ls
       - name: Push image to Docker hub
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/php-fpm-base:latest-${{ matrix.php_version }}
-          docker push miaoxing/php-fpm:latest-${{ matrix.php_version }}
+          docker push miaoxing/php-fpm-base:${{ env.TAG }}-${{ matrix.php_version }}
+          docker push miaoxing/php-fpm:${{ env.TAG }}-${{ matrix.php_version }}
           docker logout
 
   php-worker:
@@ -48,12 +51,12 @@ jobs:
       - name: Build the Docker image
         run: |
           cd php-worker-${{ matrix.php_version }}
-          docker build . -t miaoxing/php-worker:latest-${{ matrix.php_version }}
+          docker build . -t miaoxing/php-worker:${{ env.TAG }}-${{ matrix.php_version }}
           docker image ls
       - name: Push image to Docker hub
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/php-worker:latest-${{ matrix.php_version }}
+          docker push miaoxing/php-worker:${{ env.TAG }}-${{ matrix.php_version }}
           docker logout
 
   workspace:
@@ -67,14 +70,14 @@ jobs:
         continue-on-error: true
       - name: Build the Docker image
         run: |
-          export IMAGE_NAME=miaoxing/workspace:latest
+          export IMAGE_NAME=miaoxing/workspace:${{ env.TAG }}
           cd workspace
           ./hooks/build
           docker image ls
       - name: Push image to Docker hub
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/workspace:latest
+          docker push miaoxing/workspace:${{ env.TAG }}
           docker logout
 
   deploy:
@@ -89,12 +92,12 @@ jobs:
       - name: Build the Docker image
         run: |
           cd deploy
-          docker build . -t miaoxing/deploy:latest
+          docker build . -t miaoxing/deploy:${{ env.TAG }}
           docker image ls
       - name: Push image to Docker hub
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/deploy:latest
+          docker push miaoxing/deploy:${{ env.TAG }}
           docker logout
 
   build:
@@ -108,12 +111,12 @@ jobs:
       - name: Build the Docker image
         run: |
           cd build
-          docker build . -t miaoxing/build:latest
+          docker build . -t miaoxing/build:${{ env.TAG }}
           docker image ls
       - name: Push image to Docker hub
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/build:latest
+          docker push miaoxing/build:${{ env.TAG }}
           docker logout
 
   nginx:
@@ -127,10 +130,10 @@ jobs:
       - name: Build the Docker image
         run: |
           cd nginx
-          docker build . -t miaoxing/nginx:latest
+          docker build . -t miaoxing/nginx:${{ env.TAG }}
           docker image ls
       - name: Push image to Docker hub
         run: |
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/nginx:latest
+          docker push miaoxing/nginx:${{ env.TAG }}
           docker logout
