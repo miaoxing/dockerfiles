@@ -5,30 +5,126 @@ on:
     branches: master
 
 jobs:
-  build:
+  php-fpm:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php_version: [ 73, 74 ]
+        php_version: [ 7.3, 7.4 ]
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
       - name: Build the Docker image
-        env:
-          PHP_VERSION: ${{ matrix.php_version }}
         run: |
-          export TAG_VERSION=${PHP_VERSION:0:1}.${PHP_VERSION:1:1}
-          export IMAGE_NAME=miaoxing/php-fpm-base:latest-${TAG_VERSION}
+          export IMAGE_NAME=miaoxing/php-fpm-base:latest-${{ matrix.php_version }}
           cd php-fpm-base-${{ matrix.php_version }}
+          ./hooks/build
+
+          cd ../php-fpm-${{ matrix.php_version }}
+          docker build . -t miaoxing/php-fpm:latest-${{ matrix.php_version }}
+
+          docker image ls
+      - name: Push image to Docker hub
+        if: success()
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+          docker push miaoxing/php-fpm-base:latest-${{ matrix.php_version }}
+          docker push miaoxing/php-fpm:latest-${{ matrix.php_version }}
+          docker logout
+
+  php-worker:
+    needs: php-fpm
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: [ 7.3, 7.4 ]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build the Docker image
+        run: |
+          cd php-worker-${{ matrix.php_version }}
+          docker build . -t miaoxing/php-worker:latest-${{ matrix.php_version }}
+          docker image ls
+      - name: Push image to Docker hub
+        if: success()
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+          docker push miaoxing/php-worker:latest-${{ matrix.php_version }}
+          docker logout
+
+  workspace:
+    needs: php-fpm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build the Docker image
+        run: |
+          export IMAGE_NAME=miaoxing/workspace:latest
+          cd workspace
           ./hooks/build
           docker image ls
       - name: Push image to Docker hub
         if: success()
-        env:
-          PHP_VERSION: ${{ matrix.php_version }}
         run: |
-          export TAG_VERSION=${PHP_VERSION:0:1}.${PHP_VERSION:1:1}
           echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-          docker push miaoxing/php-fpm-base:latest-${TAG_VERSION}
+          docker push miaoxing/workspace:latest
+          docker logout
+
+  deploy:
+    needs: php-fpm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build the Docker image
+        run: |
+          cd deploy
+          docker build . -t miaoxing/deploy:latest
+          docker image ls
+      - name: Push image to Docker hub
+        if: success()
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+          docker push miaoxing/deploy:latest
+          docker logout
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build the Docker image
+        run: |
+          cd build
+          docker build . -t miaoxing/build:latest
+          docker image ls
+      - name: Push image to Docker hub
+        if: success()
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+          docker push miaoxing/build:latest
+          docker logout
+
+  nginx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build the Docker image
+        run: |
+          cd nginx
+          docker build . -t miaoxing/nginx:latest
+          docker image ls
+      - name: Push image to Docker hub
+        if: success()
+        run: |
+          echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+          docker push miaoxing/nginx:latest
           docker logout
