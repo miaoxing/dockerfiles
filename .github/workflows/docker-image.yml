@@ -3,6 +3,7 @@ name: Build and push docker images
 on:
   push:
     branches: [ master ]
+    tags: [ '**' ]
 
 env:
   TAG: $([ ${GITHUB_REF#refs/*/} == "master" ] && echo "latest" || echo ${GITHUB_REF#refs/*/})
