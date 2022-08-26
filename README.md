@@ -8,10 +8,12 @@
 
 ### php-fpm
 
-- PHP 7.3
+- PHP 7.3/7.4
+- apcu
 - exif
 - gmp
 - imagemagick
+- memcached
 - opcache
 - pcntl
 - phpredis
