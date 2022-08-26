@@ -6,6 +6,7 @@ if [[ -e /tmp/crontab ]]; then
   cp /tmp/crontab /etc/cron.d/crontab
   chmod 0644 /etc/cron.d/crontab
   chown root:root /etc/cron.d/crontab
+  crontab /etc/cron.d/crontab 
 fi
 
 /usr/bin/supervisord
