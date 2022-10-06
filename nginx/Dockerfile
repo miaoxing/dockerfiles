@@ -14,3 +14,9 @@ RUN set -x ; \
 RUN rm /etc/nginx/conf.d/default.conf
 
 COPY ./nginx.conf ./server-common.conf ./enable-ssl.conf ./enable-ssl-legacy.conf /etc/nginx/
+
+# Set Timezone
+ARG TZ=Asia/Shanghai
+ENV TZ ${TZ}
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
