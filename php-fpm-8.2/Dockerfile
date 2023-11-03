@@ -1,4 +1,4 @@
-FROM miaoxing/php-fpm-base:latest-8.2
+FROM miaoxing/php-fpm-base:dev-8.2
 
 # Set Timezone
 ARG TZ=Asia/Shanghai
