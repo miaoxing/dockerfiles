@@ -2,12 +2,12 @@ name: Build and push docker images
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     tags: [ '**' ]
   workflow_dispatch:
 
 env:
-  TAG: $([ ${GITHUB_REF#refs/*/} == "master" ] && echo "latest" || echo ${GITHUB_REF#refs/*/})
+  TAG: $([ ${GITHUB_REF#refs/*/} == "main" ] && echo "latest" || echo ${GITHUB_REF#refs/*/})
 
 jobs:
   php-fpm:
