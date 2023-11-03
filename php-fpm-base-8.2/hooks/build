@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -o allexport
+source ../.env
+set +o allexport
+
+cp -r ../laradock/php-fpm/* .
+
+docker build \
+    --build-arg LARADOCK_PHP_VERSION=${PHP_VERSION} \
+    --build-arg INSTALL_EXIF=${PHP_FPM_INSTALL_EXIF} \
+    --build-arg INSTALL_GMP=${PHP_FPM_INSTALL_GMP} \
+    --build-arg INSTALL_IMAGEMAGICK=${PHP_FPM_INSTALL_IMAGEMAGICK} \
+    --build-arg INSTALL_OPCACHE=${PHP_FPM_INSTALL_OPCACHE} \
+    --build-arg INSTALL_APCU=${PHP_FPM_INSTALL_APCU} \
+    --build-arg INSTALL_PCNTL=${PHP_FPM_INSTALL_PCNTL} \
+    --build-arg INSTALL_PHPREDIS=${PHP_FPM_INSTALL_PHPREDIS} \
+    --build-arg INSTALL_MEMCACHED=${PHP_FPM_INSTALL_MEMCACHED} \
+    --build-arg INSTALL_SOAP=${PHP_FPM_INSTALL_SOAP} \
+    --build-arg INSTALL_MYSQLI=${PHP_FPM_INSTALL_MYSQLI} \
+    -t $IMAGE_NAME .
