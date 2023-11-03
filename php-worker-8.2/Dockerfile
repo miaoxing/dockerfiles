@@ -1,4 +1,4 @@
-FROM miaoxing/php-fpm:latest-8.2
+FROM miaoxing/php-fpm:dev-8.2
 
 # Install supervisor, cron, rsyslog
 RUN apt-get update \
